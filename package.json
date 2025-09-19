@@ -43,9 +43,9 @@
     "orbital"
   ],
   "author": {
-    "name": "Realm Loader Team",
-    "email": "hello@realmloader.dev",
-    "url": "https://github.com/realm-loader"
+    "name": "base83",
+    "email": "b.antoine.se@gmail.com",
+    "url": "https://github.com/bantoinese83"
   },
   "license": "MIT",
   "devDependencies": {
@@ -68,14 +68,14 @@
   "peerDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/realm-loader/realm-loader-npm.git"
+    "url": "git+https://github.com/bantoinese83/Realm-Loader-NPM.git"
   },
   "bugs": {
-    "url": "https://github.com/realm-loader/realm-loader-npm/issues"
+    "url": "https://github.com/bantoinese83/Realm-Loader-NPM/issues"
   },
-  "homepage": "https://realmloader.dev",
+  "homepage": "https://github.com/bantoinese83/Realm-Loader-NPM#readme",
   "funding": {
     "type": "github",
-    "url": "https://github.com/sponsors/realm-loader"
+    "url": "https://github.com/sponsors/bantoinese83"
   }
 }
