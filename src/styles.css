@@ -1,0 +1,169 @@
+/* Realm Loader NPM - Circle Animations Styles */
+
+.realm-loader-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.realm-loader-container:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.realm-loader-title {
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #f0f0f0;
+  font-family: 'TheGoodMonolith', monospace;
+}
+
+.realm-loader-animation {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Corner decorations */
+.realm-loader-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  color: white;
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.realm-loader-container:hover .realm-loader-corner {
+  opacity: 1;
+}
+
+.realm-loader-corner.top-left {
+  top: -8px;
+  left: -8px;
+  transition-delay: 0s;
+}
+
+.realm-loader-corner.top-right {
+  top: -8px;
+  right: -8px;
+  transform: rotate(90deg);
+  transition-delay: 0.1s;
+}
+
+.realm-loader-corner.bottom-left {
+  bottom: -8px;
+  left: -8px;
+  transform: rotate(-90deg);
+  transition-delay: 0.2s;
+}
+
+.realm-loader-corner.bottom-right {
+  bottom: -8px;
+  right: -8px;
+  transform: rotate(180deg);
+  transition-delay: 0.3s;
+}
+
+/* Grid layout for multiple animations */
+.realm-loader-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .realm-loader-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .realm-loader-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Demo page styles */
+.realm-loader-demo {
+  background: #000;
+  color: #f0f0f0;
+  font-family: 'TheGoodMonolith', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.realm-loader-demo h1 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Animation keyframes */
+@keyframes realm-loader-orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes realm-loader-reverse-orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes realm-loader-pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+}
+
+@keyframes realm-loader-ripple {
+  0% {
+    transform: scale(0.1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

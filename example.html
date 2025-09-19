@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realm Loader NPM - Circle Animations Demo</title>
+    <link rel="preconnect" href="https://fonts.cdnfonts.com">
+    <link href="https://fonts.cdnfonts.com/css/thegoodmonolith" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #f0f0f0;
+            font-family: "TheGoodMonolith", monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .animation-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: visible;
+            transition: border-color 0.3s ease;
+        }
+
+        .animation-container:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .animation-title {
+            margin-bottom: 10px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .circle-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #f0f0f0;
+            font-family: "TheGoodMonolith", monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .corner {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            color: white;
+            opacity: 0;
+            z-index: 10;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .animation-container:hover .corner {
+            opacity: 1;
+        }
+
+        .top-left {
+            top: -8px;
+            left: -8px;
+            transition-delay: 0s;
+        }
+
+        .top-right {
+            top: -8px;
+            right: -8px;
+            transform: rotate(90deg);
+            transition-delay: 0.1s;
+        }
+
+        .bottom-left {
+            bottom: -8px;
+            left: -8px;
+            transform: rotate(-90deg);
+            transition-delay: 0.2s;
+        }
+
+        .bottom-right {
+            bottom: -8px;
+            right: -8px;
+            transform: rotate(180deg);
+            transition-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <h1>CIRCLE ANIMATIONS COLLECTION N°2</h1>
+    
+    <div class="container">
+        <div class="animation-container" id="radial-pulse">
+            <div class="animation-title">Radial Pulse</div>
+            <div class="circle-container"></div>
+            <div class="corner top-left">+</div>
+            <div class="corner top-right">+</div>
+            <div class="corner bottom-left">+</div>
+            <div class="corner bottom-right">+</div>
+        </div>
+
+        <div class="animation-container" id="orbital-pulse">
+            <div class="animation-title">Orbital Pulse</div>
+            <div class="circle-container"></div>
+            <div class="corner top-left">+</div>
+            <div class="corner top-right">+</div>
+            <div class="corner bottom-left">+</div>
+            <div class="corner bottom-right">+</div>
+        </div>
+
+        <div class="animation-container" id="pendulum-wave">
+            <div class="animation-title">Pendulum Wave</div>
+            <div class="circle-container"></div>
+            <div class="corner top-left">+</div>
+            <div class="corner top-right">+</div>
+            <div class="corner bottom-left">+</div>
+            <div class="corner bottom-right">+</div>
+        </div>
+
+        <div class="animation-container" id="pulse-wave">
+            <div class="animation-title">Pulse Wave</div>
+            <div class="circle-container"></div>
+            <div class="corner top-left">+</div>
+            <div class="corner top-right">+</div>
+            <div class="corner bottom-left">+</div>
+            <div class="corner bottom-right">+</div>
+        </div>
+
+        <div class="animation-container" id="concentric-rings">
+            <div class="animation-title">Concentric Rings</div>
+            <div class="circle-container"></div>
+            <div class="corner top-left">+</div>
+            <div class="corner top-right">+</div>
+            <div class="corner bottom-left">+</div>
+            <div class="corner bottom-right">+</div>
+        </div>
+
+        <div class="animation-container" id="sequential-pulse">
+            <div class="animation-title">Sequential Pulse</div>
+            <div class="circle-container"></div>
+            <div class="corner top-left">+</div>
+            <div class="corner top-right">+</div>
+            <div class="corner bottom-left">+</div>
+            <div class="corner bottom-right">+</div>
+        </div>
+
+        <div class="animation-container" id="oscillating-dots">
+            <div class="animation-title">Oscillating Dots</div>
+            <div class="circle-container"></div>
+            <div class="corner top-left">+</div>
+            <div class="corner top-right">+</div>
+            <div class="corner bottom-left">+</div>
+            <div class="corner bottom-right">+</div>
+        </div>
+
+        <div class="animation-container" id="pulsing-grid">
+            <div class="animation-title">Pulsing Grid</div>
+            <div class="circle-container"></div>
+            <div class="corner top-left">+</div>
+            <div class="corner top-right">+</div>
+            <div class="corner bottom-left">+</div>
+            <div class="corner bottom-right">+</div>
+        </div>
+
+        <div class="animation-container" id="spiral-galaxy">
+            <div class="animation-title">Spiral Galaxy</div>
+            <div class="circle-container"></div>
+            <div class="corner top-left">+</div>
+            <div class="corner top-right">+</div>
+            <div class="corner bottom-left">+</div>
+            <div class="corner bottom-right">+</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button onclick="startAll()">Start All</button>
+        <button onclick="stopAll()">Stop All</button>
+        <button onclick="changeColors()">Change Colors</button>
+        <button onclick="changeSpeed()">Change Speed</button>
+    </div>
+
+    <script type="module">
+        // This would be replaced with the actual npm package import
+        // import { CircleAnimations } from 'realm-loader-npm'
+        
+        // For demo purposes, we'll simulate the package functionality
+        class DemoCircleAnimations {
+            constructor(container, animation, config = {}) {
+                this.container = container
+                this.animation = animation
+                this.config = config
+                this.canvas = null
+                this.ctx = null
+                this.animationId = null
+                this.time = 0
+                this.lastTime = 0
+                this.isRunning = false
+                
+                this.init()
+            }
+            
+            init() {
+                this.canvas = document.createElement('canvas')
+                this.canvas.width = 180
+                this.canvas.height = 180
+                this.canvas.style.position = 'absolute'
+                this.canvas.style.left = '0'
+                this.canvas.style.top = '0'
+                this.canvas.style.pointerEvents = 'none'
+                
+                this.ctx = this.canvas.getContext('2d')
+                this.container.querySelector('.circle-container').appendChild(this.canvas)
+            }
+            
+            start() {
+                if (!this.isRunning) {
+                    this.isRunning = true
+                    this.lastTime = 0
+                    this.time = 0
+                    this.animate()
+                }
+            }
+            
+            stop() {
+                this.isRunning = false
+                if (this.animationId) {
+                    cancelAnimationFrame(this.animationId)
+                    this.animationId = null
+                }
+            }
+            
+            destroy() {
+                this.stop()
+                if (this.canvas && this.canvas.parentNode) {
+                    this.canvas.parentNode.removeChild(this.canvas)
+                }
+            }
+            
+            updateConfig(newConfig) {
+                this.config = { ...this.config, ...newConfig }
+            }
+            
+            animate = (timestamp) => {
+                if (!this.lastTime) this.lastTime = timestamp
+                const deltaTime = timestamp - this.lastTime
+                this.lastTime = timestamp
+                this.time += deltaTime * 0.001 * (this.config.speed || 1)
+                
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+                this.draw()
+                
+                if (this.isRunning) {
+                    this.animationId = requestAnimationFrame(this.animate)
+                }
+            }
+            
+            draw() {
+                const centerX = this.canvas.width / 2
+                const centerY = this.canvas.height / 2
+                const color = this.config.color || '#ffffff'
+                const opacity = this.config.opacity || 0.9
+                
+                // Simple demo drawing - each animation would have its own implementation
+                this.ctx.beginPath()
+                this.ctx.arc(centerX, centerY, 3, 0, Math.PI * 2)
+                this.ctx.fillStyle = color
+                this.ctx.fill()
+                
+                // Add some basic animation based on type
+                for (let i = 0; i < 8; i++) {
+                    const angle = (i / 8) * Math.PI * 2 + this.time
+                    const radius = 30 + Math.sin(this.time * 2 + i) * 10
+                    const x = centerX + Math.cos(angle) * radius
+                    const y = centerY + Math.sin(angle) * radius
+                    
+                    this.ctx.beginPath()
+                    this.ctx.arc(x, y, 2, 0, Math.PI * 2)
+                    this.ctx.fillStyle = color
+                    this.ctx.fill()
+                }
+            }
+        }
+        
+        // Initialize all animations
+        const animations = {}
+        const animationTypes = [
+            'radial-pulse', 'orbital-pulse', 'pendulum-wave', 'pulse-wave',
+            'concentric-rings', 'sequential-pulse', 'oscillating-dots',
+            'pulsing-grid', 'spiral-galaxy'
+        ]
+        
+        animationTypes.forEach(type => {
+            const container = document.getElementById(type)
+            animations[type] = new DemoCircleAnimations(container, type, {
+                color: '#ffffff',
+                speed: 1,
+                opacity: 0.9
+            })
+        })
+        
+        // Global control functions
+        window.startAll = () => {
+            Object.values(animations).forEach(anim => anim.start())
+        }
+        
+        window.stopAll = () => {
+            Object.values(animations).forEach(anim => anim.stop())
+        }
+        
+        window.changeColors = () => {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff', '#5f27cd', '#00d2d3']
+            Object.values(animations).forEach(anim => {
+                const randomColor = colors[Math.floor(Math.random() * colors.length)]
+                anim.updateConfig({ color: randomColor })
+            })
+        }
+        
+        window.changeSpeed = () => {
+            const speeds = [0.5, 1, 1.5, 2]
+            Object.values(animations).forEach(anim => {
+                const randomSpeed = speeds[Math.floor(Math.random() * speeds.length)]
+                anim.updateConfig({ speed: randomSpeed })
+            })
+        }
+        
+        // Start all animations on load
+        window.addEventListener('load', () => {
+            startAll()
+        })
+    </script>
+</body>
+</html>
