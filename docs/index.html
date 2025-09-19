@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realm Loader NPM - Complete Demo</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <link rel="preconnect" href="https://fonts.cdnfonts.com">
     <link href="https://fonts.cdnfonts.com/css/thegoodmonolith" rel="stylesheet">
-    <link rel="stylesheet" href="./dist/index.css" onerror="console.error('Failed to load CSS:', this.href)">
+    <!-- CSS is included in the CDN module -->
     <style>
         * {
             margin: 0;
@@ -571,29 +572,23 @@ animation.destroy()</pre>
             let CircleAnimations, AnimationPresets;
             
             try {
-                // Try to load from unpkg CDN
+                // Load from unpkg CDN
                 const module = await import('https://unpkg.com/realm-loader-npm@2.1.1/dist/index.esm.js');
                 CircleAnimations = module.CircleAnimations;
                 AnimationPresets = module.AnimationPresets;
+                console.log('✅ Module loaded successfully from CDN');
             } catch (error) {
-                console.warn('Failed to load from CDN, trying local build...');
-                try {
-                    // Fallback to local build
-                    const module = await import('./dist/index.esm.js');
-                    CircleAnimations = module.CircleAnimations;
-                    AnimationPresets = module.AnimationPresets;
-                } catch (localError) {
-                    console.error('Failed to load module:', localError);
-                    // Show error message to user
-                    document.getElementById('loader-grid').innerHTML = `
-                        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #ff6b6b;">
-                            <h3>⚠️ Module Loading Error</h3>
-                            <p>Unable to load the animation module. Please check the console for details.</p>
-                            <p>Make sure you're running this from a local server or the module is properly deployed.</p>
-                        </div>
-                    `;
-                    return;
-                }
+                console.error('❌ Failed to load module from CDN:', error);
+                // Show error message to user
+                document.getElementById('loader-grid').innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #ff6b6b;">
+                        <h3>⚠️ Module Loading Error</h3>
+                        <p>Unable to load the animation module from CDN.</p>
+                        <p>Please check your internet connection and try again.</p>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+                return;
             }
             // Animation configurations
             const animations = [
