@@ -25,11 +25,7 @@ export class PulsingGridAnimation extends BaseAnimation {
     // Calculate breathing effect - grid expands and contracts
     const breathingFactor = Math.sin(this.time * this.breathingSpeed) * 0.2 + 1.0
 
-    // Draw center dot
-    this.ctx.beginPath()
-    this.ctx.arc(centerX, centerY, 3, 0, Math.PI * 2)
-    this.ctx.fillStyle = this.getColor(0.9)
-    this.ctx.fill()
+    // Center dot removed for cleaner look
 
     // Draw pulsing grid pattern
     for (let row = 0; row < this.gridSize; row++) {

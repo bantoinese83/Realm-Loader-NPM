@@ -20,11 +20,7 @@ export class SpiralVortexAnimation extends BaseAnimation {
     const centerX = this.canvas.width / 2
     const centerY = this.canvas.height / 2
 
-    // Draw center vortex
-    this.ctx.beginPath()
-    this.ctx.arc(centerX, centerY, 4, 0, Math.PI * 2)
-    this.ctx.fillStyle = this.getColor(0.9)
-    this.ctx.fill()
+    // Center dot removed for cleaner look
 
     // Draw spiral vortex particles
     for (let i = 0; i < this.particleCount; i++) {

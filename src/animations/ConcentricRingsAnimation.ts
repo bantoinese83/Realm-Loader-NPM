@@ -16,11 +16,7 @@ export class ConcentricRingsAnimation extends BaseAnimation {
     const centerX = this.canvas.width / 2
     const centerY = this.canvas.height / 2
 
-    // Draw center dot
-    this.ctx.beginPath()
-    this.ctx.arc(centerX, centerY, 3, 0, Math.PI * 2)
-    this.ctx.fillStyle = this.getColor(0.9)
-    this.ctx.fill()
+    // Center dot removed for cleaner look
 
     // Draw concentric rings of dots
     for (let r = 0; r < this.ringCount; r++) {

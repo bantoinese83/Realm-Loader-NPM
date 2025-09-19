@@ -27,11 +27,7 @@ export class OrbitalPulseAnimation extends BaseAnimation {
     const centerX = this.canvas.width / 2
     const centerY = this.canvas.height / 2
 
-    // Draw center
-    this.ctx.beginPath()
-    this.ctx.arc(centerX, centerY, 3, 0, Math.PI * 2)
-    this.ctx.fillStyle = this.getColor(0.9)
-    this.ctx.fill()
+    // Center dot removed for cleaner look
 
     // Draw orbit circles (very faint)
     this.orbits.forEach((orbit) => {

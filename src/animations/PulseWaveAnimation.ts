@@ -20,11 +20,7 @@ export class PulseWaveAnimation extends BaseAnimation {
     const centerX = this.canvas.width / 2
     const centerY = this.canvas.height / 2
 
-    // Draw center
-    this.ctx.beginPath()
-    this.ctx.arc(centerX, centerY, 2, 0, Math.PI * 2)
-    this.ctx.fillStyle = this.getColor(0.9)
-    this.ctx.fill()
+    // Center dot removed for cleaner look
 
     // Draw dots in concentric circles with wave effect
     this.dotRings.forEach((ring, ringIndex) => {

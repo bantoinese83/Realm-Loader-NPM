@@ -20,11 +20,7 @@ export class OrbitalDanceAnimation extends BaseAnimation {
     const centerX = this.canvas.width / 2
     const centerY = this.canvas.height / 2
 
-    // Draw center
-    this.ctx.beginPath()
-    this.ctx.arc(centerX, centerY, 4, 0, Math.PI * 2)
-    this.ctx.fillStyle = this.getColor(0.9)
-    this.ctx.fill()
+    // Center dot removed for cleaner look
 
     // Draw orbital dancers
     for (let orbit = 0; orbit < this.orbitCount; orbit++) {
