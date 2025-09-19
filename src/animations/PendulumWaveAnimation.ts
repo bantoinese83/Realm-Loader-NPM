@@ -23,12 +23,14 @@ export class PendulumWaveAnimation extends BaseAnimation {
     const centerY = this.canvas.height / 2
     
     const referenceLine = document.createElement('div')
-    referenceLine.style.position = 'absolute'
-    referenceLine.style.width = `${this.pendulumCount * 8}px`
-    referenceLine.style.height = '1px'
-    referenceLine.style.left = `${centerX - (this.pendulumCount * 8) / 2}px`
-    referenceLine.style.top = `${centerY - this.pendulumLength}px`
-    referenceLine.style.backgroundColor = this.getColor(0.15)
+    if (referenceLine.style) {
+      referenceLine.style.position = 'absolute'
+      referenceLine.style.width = `${this.pendulumCount * 8}px`
+      referenceLine.style.height = '1px'
+      referenceLine.style.left = `${centerX - (this.pendulumCount * 8) / 2}px`
+      referenceLine.style.top = `${centerY - this.pendulumLength}px`
+      referenceLine.style.backgroundColor = this.getColor(0.15)
+    }
     this.container.appendChild(referenceLine)
   }
 

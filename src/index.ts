@@ -42,10 +42,10 @@ export { PerformanceOptimizer } from './PerformanceOptimizer'
 export { AnimationPresets } from './AnimationPresets'
 
 // React components (separate entry point)
-// export * from './react/RealmLoader'
+export * from './react/RealmLoader'
 
-// Vue components (separate entry point)
-// export * from './vue/components'
+// Vue components (separate entry point) - use namespace to avoid conflicts
+export * as VueComponents from './vue/components'
 
 // CSS styles
 import './styles.css'

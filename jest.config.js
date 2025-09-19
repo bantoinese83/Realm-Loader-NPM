@@ -16,4 +16,10 @@ export default {
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov', 'html'],
+  globals: {
+    'ts-jest': {
+      useESM: true
+    }
+  },
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js']
 }

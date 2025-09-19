@@ -74,9 +74,9 @@ describe('CircleAnimations', () => {
   })
 
   test('should throw error for invalid container selector', () => {
-    Object.defineProperty(document, 'querySelector', {
-      value: jest.fn(() => null),
-    })
+    // Mock document.querySelector to return null
+    const mockQuerySelector = jest.fn(() => null)
+    jest.spyOn(document, 'querySelector').mockImplementation(mockQuerySelector)
 
     expect(() => {
       new CircleAnimations({
@@ -84,6 +84,9 @@ describe('CircleAnimations', () => {
         animation: 'radial-pulse',
       })
     }).toThrow('Container element not found: #invalid-container')
+
+    // Restore original
+    jest.restoreAllMocks()
   })
 
   test('should throw error for invalid animation type', () => {
