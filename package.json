@@ -1,6 +1,6 @@
 {
   "name": "realm-loader-npm",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A comprehensive collection of 14 beautiful circle animations with performance optimization, presets, themes, and React/Vue components",
   "type": "module",
   "main": "dist/index.js",
