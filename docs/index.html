@@ -6,7 +6,7 @@
     <title>Realm Loader NPM - Complete Demo</title>
     <link rel="preconnect" href="https://fonts.cdnfonts.com">
     <link href="https://fonts.cdnfonts.com/css/thegoodmonolith" rel="stylesheet">
-    <link rel="stylesheet" href="./dist/index.css">
+    <link rel="stylesheet" href="./dist/index.css" onerror="console.error('Failed to load CSS:', this.href)">
     <style>
         * {
             margin: 0;
@@ -561,39 +561,40 @@ animation.destroy()</pre>
     </div>
 
     <script type="module">
-        // Try to load from CDN first, fallback to local
-        let CircleAnimations, AnimationPresets;
-        
-        try {
-            // Try to load from unpkg CDN
-            const module = await import('https://unpkg.com/realm-loader-npm@2.1.1/dist/index.esm.js');
-            CircleAnimations = module.CircleAnimations;
-            AnimationPresets = module.AnimationPresets;
-        } catch (error) {
-            console.warn('Failed to load from CDN, trying local build...');
-            try {
-                // Fallback to local build
-                const module = await import('./dist/index.esm.js');
-                CircleAnimations = module.CircleAnimations;
-                AnimationPresets = module.AnimationPresets;
-            } catch (localError) {
-                console.error('Failed to load module:', localError);
-                // Show error message to user
-                document.getElementById('loader-grid').innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #ff6b6b;">
-                        <h3>⚠️ Module Loading Error</h3>
-                        <p>Unable to load the animation module. Please check the console for details.</p>
-                        <p>Make sure you're running this from a local server or the module is properly deployed.</p>
-                    </div>
-                `;
-                return;
-            }
-        }
-
         // Initialize the demo
         initializeDemo();
 
         async function initializeDemo() {
+            console.log('Initializing demo...');
+            
+            // Try to load from CDN first, fallback to local
+            let CircleAnimations, AnimationPresets;
+            
+            try {
+                // Try to load from unpkg CDN
+                const module = await import('https://unpkg.com/realm-loader-npm@2.1.1/dist/index.esm.js');
+                CircleAnimations = module.CircleAnimations;
+                AnimationPresets = module.AnimationPresets;
+            } catch (error) {
+                console.warn('Failed to load from CDN, trying local build...');
+                try {
+                    // Fallback to local build
+                    const module = await import('./dist/index.esm.js');
+                    CircleAnimations = module.CircleAnimations;
+                    AnimationPresets = module.AnimationPresets;
+                } catch (localError) {
+                    console.error('Failed to load module:', localError);
+                    // Show error message to user
+                    document.getElementById('loader-grid').innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #ff6b6b;">
+                            <h3>⚠️ Module Loading Error</h3>
+                            <p>Unable to load the animation module. Please check the console for details.</p>
+                            <p>Make sure you're running this from a local server or the module is properly deployed.</p>
+                        </div>
+                    `;
+                    return;
+                }
+            }
             // Animation configurations
             const animations = [
             { name: 'radial-pulse', title: 'Radial Pulse', config: { ringCount: 8, maxRadius: 75 } },
